@@ -23,6 +23,8 @@ pipeline {
                 ]) {
                     script {
                         dir('terraform') {
+                            // Cleanup previous runs
+                            sh 'rm -rf .terraform/ terraform.tfstate* tfplan*'
                             // Terraform initialization
                             sh 'terraform init'
                             // Create Terraform plan
